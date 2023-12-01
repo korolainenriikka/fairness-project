@@ -1,0 +1,242 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{stanley}{article}{}
+      \name{author}{30}{}{%
+        {{un=0,uniquepart=base,hash=5112ea130eadef0764fce0145b8b9f91}{%
+           family={Thrun},
+           familyi={T\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7020138a2fcb11ace2410ecda6ad0e96}{%
+           family={Montemerlo},
+           familyi={M\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6a635409df22c204b68d994c1929762b}{%
+           family={Dahlkamp},
+           familyi={D\bibinitperiod},
+           given={Hendrik},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=01630f34351c5fa7ba1dbc0ef043bbd2}{%
+           family={Stavens},
+           familyi={S\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d89569771a7fe1e3fdd978f5e96887c6}{%
+           family={Aron},
+           familyi={A\bibinitperiod},
+           given={Andrei},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4d20f0c0cb583117558cdb16b3faa730}{%
+           family={Diebel},
+           familyi={D\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4fce981dbddcfdfcd40dfb9510082ecf}{%
+           family={Fong},
+           familyi={F\bibinitperiod},
+           given={Philip},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=04f906960382d3a7316a3505cae085b9}{%
+           family={Gale},
+           familyi={G\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=007a3c12994b93445b2eeea9f8afa2f0}{%
+           family={Halpenny},
+           familyi={H\bibinitperiod},
+           given={Morgan},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b5b430028362babc9b6aa2916d1344b7}{%
+           family={Hoffmann},
+           familyi={H\bibinitperiod},
+           given={Gabriel},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1376b286448b7d699cbec84653c9d427}{%
+           family={Lau},
+           familyi={L\bibinitperiod},
+           given={Kenny},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c71d637c74c08476fc83ede355127ecb}{%
+           family={Oakley},
+           familyi={O\bibinitperiod},
+           given={Celia},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=136955f783ed2315f45927a0f2abca24}{%
+           family={Palatucci},
+           familyi={P\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c4c811ec90866da6350f251f46860f82}{%
+           family={Pratt},
+           familyi={P\bibinitperiod},
+           given={Vaughan},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=daf7ae255d7151b48e03106a4a570ab1}{%
+           family={Stang},
+           familyi={S\bibinitperiod},
+           given={Pascal},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=341a61122f6eda6b7f526da6bb86bfde}{%
+           family={Strohband},
+           familyi={S\bibinitperiod},
+           given={Sven},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0e596092cf7ab03b6dc0ba76a8d24bd1}{%
+           family={Dupont},
+           familyi={D\bibinitperiod},
+           given={Cedric},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8bd3beee9870ec4ec0b5e2111d19e406}{%
+           family={Jendrossek},
+           familyi={J\bibinitperiod},
+           given={Lars-Erik},
+           giveni={L\bibinithyphendelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6be0106428ce1acd08516d687e7f43bc}{%
+           family={Koelen},
+           familyi={K\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9b4c83b2d224f3d67f2c844b0b242a5d}{%
+           family={Markey},
+           familyi={M\bibinitperiod},
+           given={Charles},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=21756168842b34cf416e5c44012486bf}{%
+           family={Rummel},
+           familyi={R\bibinitperiod},
+           given={Carlo},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2cd9c6f1db3e71afaff31e9703a3cf14}{%
+           family={Niekerk},
+           familyi={N\bibinitperiod},
+           given={Joe},
+           giveni={J\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod},
+           prefixun=0}}%
+        {{un=0,uniquepart=base,hash=b961ea529a9f73d820902f1615cca9cd}{%
+           family={Jensen},
+           familyi={J\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2637e29972173e32e2062b0481d9184e}{%
+           family={Alessandrini},
+           familyi={A\bibinitperiod},
+           given={Philippe},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a780b2fbd99e4f7ce78d33324e39d4c2}{%
+           family={Bradski},
+           familyi={B\bibinitperiod},
+           given={Gary},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=37f1ee798f2faaf1955f6dc069c24f5e}{%
+           family={Davies},
+           familyi={D\bibinitperiod},
+           given={Bob},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fb49a26b4e90cfcad2b8f4f5d780fce3}{%
+           family={Ettinger},
+           familyi={E\bibinitperiod},
+           given={Scott},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=656736e2b93f260c9619384b02d7cdf4}{%
+           family={Kaehler},
+           familyi={K\bibinitperiod},
+           given={Adrian},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=10aebe569a37d45e9413f369255fba77}{%
+           family={Nefian},
+           familyi={N\bibinitperiod},
+           given={Ara},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=11a3e39338ccf3d556315b962edbb267}{%
+           family={Mahoney},
+           familyi={M\bibinitperiod},
+           given={Pamela},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a8138eeb00bc94a8497816e6b86343b3}
+      \strng{fullhash}{a6beff02fdc0b622eb9b00e190da0f18}
+      \strng{bibnamehash}{a6beff02fdc0b622eb9b00e190da0f18}
+      \strng{authorbibnamehash}{a6beff02fdc0b622eb9b00e190da0f18}
+      \strng{authornamehash}{a8138eeb00bc94a8497816e6b86343b3}
+      \strng{authorfullhash}{a6beff02fdc0b622eb9b00e190da0f18}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Abstract This article describes the robot Stanley, which won the 2005 DARPA Grand Challenge. Stanley was developed for high-speed desert driving without manual intervention. The robot's software system relied predominately on state-of-the-art artificial intelligence technologies, such as machine learning and probabilistic reasoning. This paper describes the major components of this architecture, and discusses the results of the Grand Challenge race. © 2006 Wiley Periodicals, Inc.}
+      \field{journaltitle}{Journal of Field Robotics}
+      \field{number}{9}
+      \field{title}{Stanley: The robot that won the DARPA Grand Challenge}
+      \field{volume}{23}
+      \field{year}{2006}
+      \field{pages}{661\bibrangedash 692}
+      \range{pages}{32}
+      \verb{doi}
+      \verb https://doi.org/10.1002/rob.20147
+      \endverb
+      \verb{eprint}
+      \verb https://onlinelibrary.wiley.com/doi/pdf/10.1002/rob.20147
+      \endverb
+      \verb{urlraw}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.20147
+      \endverb
+      \verb{url}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.20147
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
