@@ -10,9 +10,15 @@ Using the [German Credit Dataset](https://archive.ics.uci.edu/dataset/144/statlo
 
 ### Encoding
 
-Depending on if they represent an ordinal or a nominal value, categorical variables should either be integer encoded or one-hot encoded. For some variables, this disticntion is not that clear, so we need to make an educated guess.
+Depending on if they represent an ordinal or a nominal value, categorical variables should either be integer encoded or one-hot encoded. For some variables, this distinction is not that clear, so we need to make an educated guess.
 
-- Status of existing checking account (integer encoding, from 0 [no checking] to 5 [over 200 DM in checking])
+#### One-hot encoding
+
+- 
+
+#### Integer encoding
+
+- Status of existing checking account (0 [no checking], 1 [< 0 DM], 2 [0-200 DM] , 3 [over 200 DM in checking])
 - 
 
 ### Sensitive features
