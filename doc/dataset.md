@@ -45,7 +45,8 @@ All features were encoded so that a high value corresponds to a good situation, 
 - Job (0 [unemployed], 1 [unskilled], 2 [skilled], 3 [management])
 
 #### Other encoding
-- Personal status and sex (create two binary columns: male/female and single/married)
+- Personal status and sex (drop Personal status as it is incomplete, only keep sex value)
+    - Sex (0 [male], 1 [female])
 
 ### Sensitive features
 
