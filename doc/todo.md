@@ -10,7 +10,7 @@
 - Train the model
 
 
-## Riika
+## Riikka
 
 - Cross-validation
 - fairness metrics
