@@ -15,17 +15,37 @@
 
 \section*{Introduction}
 
+A focal point in the machine learning community recently has 
+been to make algorithmic treatment fair. This has led to legistlation related 
+to the area being or prepared, most notably being the EU fair AI act \cite{Aiact}.
+
+One of the central problems in enforcing fairness is that
+ lots of datasets encode previous biases. Left 
+unchecked, these are transferred to any model built on them. For this reason,
+there has been an active development of fairness metrics \cite{stanley}.
+These generally choose one trait used for discrimination and criterion for fairness, demonstrate 
+the existence of discrimination, and correct for it based on this one trait.
+In this work, we consider a setting closer to a real application case, where 
+we need to consider many traits at once. To measure fairness in this setting, 
+we define the measure of intersectional group fairness, and correct a 
+credit-predicting random forest model to meet this fairness criterion.
+
+The rest of this report is organized as follows. We start by outlining the 
+context of the problem, and by describing the machine learning solution used.
+Then, we define the fairness criterion of intersectional group fairness and 
+use the criterion for evaluating our initial model. Then, we use the ... 
+mechanism to correct the fairness gap.
 
 \section*{Context}
 
 The imagined setting studied in this project is as follows. 
 A credit institution is building their first model for prediction whom to give credit to.
-In light of the new artificial intelligence legistlation they want to 
-make sure that none of the regulations are compromised when introducing 
+In light of the new legistlation they want to 
+make sure that the regulations are not compromised when introducing 
 algorithmic decision-making. Additionally, the company managers are interested 
-in if the new rules can be exploited even to their financial advantage: if 
+in if the new rules can be exploite to their financial advantage: if 
 imposing fairness could on one hand make sure that the model is lawful, but on 
-the other hand also possibly increase company profits. A team of analysts are 
+the other hand also increase company profits. A team of analysts are 
 tasked to investigate these matters.
 
 \section*{Technical setting: a random forest for credit default prediction}
@@ -34,96 +54,89 @@ The dataset used is the German credit dataset \cite{stanley}.
 Notably, the dataset is from 1994, which makes its predictive power for the future 
 less certain, especially with respect to fairness: equality has greatly advanced 
 between now and the date of the dataset.
-Of the features available in the data, some are additionally considered 
-discriminatory as features in decision-making in the present: marital status, 
-sex, age, and immigrant status. Lastly, a significant constraint from the data 
+Of the features available in the data, some are nowadays considered 
+discriminatory as features in decision-making: marital status, 
+sex, age, and immigrant status.
+Of these, marital status was omitted from the analysis because of all females being noted as 
+married or widowed. Lastly, a significant constraint from the data 
 is its size: there are only 1000 rows. 
 
-The dataset was preprocessed by encoding categorical features into one-hot encoded 
-dummy variables or numerical variables depending on the ordinality of each variable.
+The data was preprocessed by encoding categorical features into one-hot encoded 
+dummy or numerical variables depending on the ordinality of each variable.
+Age, used as a sensitive variable in this analysis, was turned to a binary feature by splitting it to less or more than 25 years. 
 A summary of encodings can be found in table 1 \cite{stanley}. For hyperparameter 
-optimization, a simple grid search was performed, and chosen parameters can be found in table 2 \cite{stanley}.
-Most notable of these are add most notable params here
+optimization, a simple grid search was performed, and ... were found to result in the highest accuracy.
 
 The model type used to predict credit defaults was a random forest, since the 
-dataset description named it as the method with the best baseline accuracy, which 
-is in line with the common knowledge that it is one of the best out-of-the-box model types \cite{stanley}.
-The accuracy listed as baseline, 78\%, was achieved for the initial model.
-For testing fairness levels, leave-one-out cross-validation was done to obtain 
+dataset description named it as having the best baseline accuracy \cite{stanley}.
+The accuracy listed as baseline, 78\%, was achieved with our initial model.
+For testing fairness levels, leave-one-out cross-validation was performed to obtain 
 a test prediction for each data point. This was opted for instead of a separate test set 
 because of the small dataset size: we assumed that slight deviation of the model because of leaving out one data point 
-is less bad than only measuring fairness on a very small data set and not using all data for training.
+is a better approximation than measuring fairness on a small test set and not using all data for training.
 
 Specifically, we used the sklearn v. version here RandomForest \cite{stanley} for classification, 
 and cross-val-predict for obtaining test predictions for all data points in 
 the dataset.
 
+huom table 2 laita sensitive or not (used for fairness analysis)
+
 \section*{The fairness condition: intersectional group fairness}
 
-To motivate the choice of fairness constraint, we trace back to the foundational goal 
-of credit prediction. The goal of a credit model is to output a probability that 
-expresses one's likelihood of paying it back. Thus, the company objective is to find 
+To motivate the choice of fairness constraint, we trace back to our goal and assumptions.
+ The goal of a credit model is to output a probability that 
+expresses one's likelihood of paying back their credit. Thus, the company objective is to find 
 the decent people: those who duly take care of their resposibilities.
 
-The assumption of credit modeling is that a person's financial status 
-correlates with one's decentness. However, the problem with the use of old data 
-is that the data encodes stereotypes: since no ground truth on default rates is given,
-one can presuppose that the data penalizes disadvantaged groups in credit grant decisions because of blunt discrimination.
-To bring this point further, one can even assume that the world encodes stereotypes:
-it is a known fact, for example, that eqully qualified females tend to earn less 
-than men. This means that the mapping from earnings to decentness between sexes is not equal, 
-and that our foundational assumption is broken: the mapping of nonsensitive features to 
-default rates is not necessarily uniform across different demographic groups.
+The assumption of modeling on the German credit dataset is that the historical data of the mapping from a person's financial status and personal details
+to creditworthiness is truthful: that those granted credit in the dataset are the least likely to default.
 
-The hypothesis for correcting this fault is the following. We assume that 
-within each group, grouped by level of societal discrimination, the top percentile of those modeled as 
-most creditworthy is, in reality, equally creditworthy. For the grouping, we assume 
-a phenomenon of compounding: having one disadvantageous trait is better than having two, 
-and the relation of financial status to creditworthiness is unequal also between these groups.
+However, there are well-justified reasons to believe that this is not the case.
+Since no ground truth on default rates is given, it is reasonable to bring about the hypothesis that
+the data penalizes disadvantaged groups in credit decisions because of blunt discrimination.
+One example of why this is reasonable is the known pattern that eqully qualified females tend to be paid worse 
+than men. On the other hand, it seems reasonable to assume that the relationship between nonsensitive
+features (features related to financial status) and the target has real predictive power in the present.
+An additional assumption we make is that disadvantages compound: that those belonging to multiple traditionally 
+discriminated groups, such as immigrant females, experience the strongest acts of discrimination, and that the
+reliability of their credit decision in historical data does not equal that of another group with only a single 
+disadvantageous trait.
 
-To measure this, we introduce the metric of intersectional group fairness:
+To measure the level of fairness, we divide the population 
+into groups based on the assumed disadvantages each subject has: whether one is female, under 25 years old or of immigrant background. Then, we apply standard group fairness
+to each group to check if equal proportions of groups with different disadvantages are granted credit. 
+A key insight to note here is that we are also aiming for better profits:
+ we hypothesize that our way of finding people to grant 
+credit to leads to lower default rates than relying on the truthfulness of 
+past decisions: we try to improve the profit margin by 
+not declining credit for good applicants because of untrue stereotypes.
+
+Formally, intersectional group fairness is defined as followings:
 
 definition: intersectional group fairness 
-between all combinations of disadvantage, the true default rate in percentile i is equal for all i.
+1. divide population by disadvantage / other. proportion of credit should be equal
+disadvantage: all nonempty subsets of the set of disadvantages
 
-goal for profit: find the most decent people
-
-assumption of modeling: you can use data to get the target.
-    problem with old data: encodes nontrue stereotypes, such as women default, young default 
-    so: assumption may be broken?
-
-hypothesis: order people by decentness within stereotypical groups.
-cutoff, above that, grant credit -> you get the most decent people 
-    key insight: this should also maximize profit
-grouping by how much stereotypical discrimination
-    intersectionality: more disadvantages compound to more discrimination    
-
-additional +'s: profit, affirmative action, law
-
-also, affirmative action. additional +, brand prestige
-we dont know if this is true but we can check business metrics after implementing 
-    the model.
-question: stereotyped groups are more decent than is assumed by data and nonfair models
-
-also, law
-law: requires individual fairness. one with similar nonsensitives should 
-    have equal decision 
-group fairness causes discrimination in individual fairness sense to advantaged groups 
-    allowed in law for affirmative action 
+Implementing this fairness condition has several advantages. Trivially, we achieve group fairness. For individual fairness,
+if the assumption of the traits considered to cause discrimination holds (eg. that immigrant population is not 
+in reality better off, an unlikely state of affairs), we are guaranteed to only compromise individual fairness in 
+ways that can be justified as affirmative action, making this a form of lawful positive discrimination.
+This results from the fact that we correct for group fairness by artificially granting more credit to 
+groups discriminated against in the group fairness sense, thus we only change decisions for members disadvantaged groups for the better.
+Lastly, an additional benefit for the credit institution is that doing affirmative action by enforcing fairness
+can be used as a marketing and branding argument, which could improve the public reputation of the institution.
 
 \subsection*{Pre-remedy fairness level}
 
 The level of group fairness was measured by splitting the data set in two, 
-one being the disadvantaged group and one for all other subjects, Then, 
+one being the disadvantaged group and one for all other subjects. Then, 
 credit grant rates were compared between the groups. This was conducted for all 
-combinations of disadvantages. The results for these experiments are listed in table 3. \cite{stanley}
+combinations of the disadvantages. The results for these experiments are listed in table 3. \cite{stanley}
 
-The most significant insights we can see from the table are the comparative 
-impact of the disadvantages, and compounding. The results show that age seems 
-to cause the most unfair treatment, whereas sex has the least impact on creditworthiness,
-with immigrant status between these. As for joint effects, we see the assumed pattern of compounding: 
-having more disadvantages puts one in an even worse position, with the combination
-of all disadvantages being the worst outcome of all.
+The most significant insights we can see from the table is that the hypothesis of compounding seems to hold:
+those with more disadvantages are worse off. 
+Additionally, for the individual traits,  age seems 
+to cause the most unfair treatment, whereas sex has the least impact on creditworthiness.
 
 \subsection*{Imposing fairness: correction mechanism here}
 remedying fairness 
@@ -162,6 +175,57 @@ the model we used
         
 sklearn random forest, sklearn loo cv
 
+
+goal for profit: find the most decent people
+
+assumption of modeling: you can use data to get the target.
+    problem with old data: encodes nontrue stereotypes, such as women default, young default 
+    so: assumption may be broken?
+
+hypothesis: order people by decentness within stereotypical groups.
+cutoff, above that, grant credit -> you get the most decent people 
+    key insight: this should also maximize profit
+grouping by how much stereotypical discrimination
+    intersectionality: more disadvantages compound to more discrimination    
+
+additional +'s: profit, affirmative action, law
+
+also, affirmative action. additional +, brand prestige
+we dont know if this is true but we can check business metrics after implementing 
+    the model.
+question: stereotyped groups are more decent than is assumed by data and nonfair models
+
+also, law
+law: requires individual fairness. one with similar nonsensitives should 
+    have equal decision 
+group fairness causes discrimination in individual fairness sense to advantaged groups 
+    allowed in law for affirmative action 
+
+elisiishetkonenmitä
+mitä yritän perustella: miksi intersectional group fairness on järkevä ratkaisu
+perusteet
+    data on biased eli datan päätökset ei oo ne jotka on oikeesti kaikista parhaita
+        data: who is assumed to pay back duly, true: who pays back duly 
+        we have good reasons to suspect these are not the same people. that discriminated people are actually better
+        syy (oletus) syrjintä
+        peruste: tiedetyt palkkaerot (eti reference)
+    suhde financial status -> creditworthy on järkevä
+    jos järjestät statuksen mukaan et saa parhaita
+        jos järjestätä statuksen mukaan syrjintäkorjauksella saat parhaat
+
+        intro 
+        1. establish a territory: field studied
+credit needs to be fair 
+eu law for equal ai
+2. establishing a niche: what is the gap filled
+data has biases
+definition of fairness, some condition eg gender 
+then manipulate data/model/output to make it so that condition is met 
+3. occupying the niche: filling the gap
+but what about the young disabled female immigrant?
+considering only one trait at a time does not suffice
+in this work we consider seeing for everything in credit context
+we are able to 
 
 \printbibliography
 
