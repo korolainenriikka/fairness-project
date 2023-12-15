@@ -143,21 +143,91 @@ remedying fairness
 technique - rationale for using - results
 for a few techniques, find the best one
 
+rationale for pre/postprocessing
+simpler to implement for a complex model
+    output modification is quite justified legally, is explainable and can be backed as affirmative action.
+
+preprocessing technique 
+
+postprocessing technique
+combinations of sensitive variables
+    divide by these into 8 nonoverlapping groups 
+order by class probability 
+take ratio of first from the queue and grant -> ratio is easy to change
+
+Results of postprocessing.
+ratios vary quite a bit 
+data imbalance
+accuracy is not reduced too much (trade wrong predictions for other wrongs, not great model so we cannot really know 
+how much accuracy we trade off)
+we flip about 9 percent of labels. is not thaaat much 
+
+results in table.
+    percentage of labels flipped in preprocessing
+    percentage of labels flipped in postprocessing
+    ratio
+
+table 2 accuracy scores
+0.77 0.77 0.64
+
 \subsection*{Conclusion}
 
 conclusion: suggestions for the institution
+
+see how business metrics evolve to see if our hypothesis of better or equal profits holds
+
 which corrections made sense? did they remedy the problem?
 did the problem make sense?
 
-see how business metrics evolve
+Tradeoff of fairness to accuracy loss is good. you should definitely do these corrections
+satisfying a large fraction of fairness, group fairness and compromise individual fairness only as affirmative 
+action -> marketing argument
+the problem was good because you cannot consider stuff in isolation in real life
 
-change fairness constraint if necessary: make disadvanteged even more 
-or less represented, according to their true default rates
+to improve we need more representative, balanced data -> ehen doing further decisions, save the data and decision made to 
+iteratively finetune the process. model fairness could be experimented but the downside is explainability (rf not super 
+explainable)
+
+general conclusion
+fairness is important?
+you dont need magic tricks to implement fairness, simple tricks are good since they are explainable,
+    esp in case of a complex model
+
+In this report, we investigated how to enforce group fairness for all sensitive groups present in a data set 
+simultaneously. The central goal of this was to achieve a fair model that is lawful, explainable and 
+profit-maximizing for the institution. The result indicates that this is possible; based on our dataset, it seems that 
+fairness can be achieved with a reasonably accurate model. Thus, our central message to the credit institution
+is that the fairness-corrected model is definitely beneficial: its premises of nondiscrimination in a lawful and 
+explainable way far outweigh the accuracy loss.
+
+As notes on further improvements, the most important next step would be to acquire more data. Also, this data should 
+be more representative of all subgroups presented in this report to find less individual data point -depending credit grant thresholds for each group.
+Additionally, model optimization with fairness constraints could be experimented with; an interesting hypothesis to experiment with is 
+to only add a constraint for group fairness only for the group with all disadvantages and see how far this 
+constraint enforces global intersectional group fairness.
+
+As a general conclusion, a key insight to note is that to enforce fairness, one does not necessarily need highly complex and advanced 
+procedures. On the contrary, for more complex but accurate models, such as random forests used here, the simpler techniques can
+lead to greater explainability and ultimately a more trustworthy result.
+
+\subsection*{Abstract}
+
+credit model for a credit institution to achieve group fairness
+we find unfairness
+we use simple pre/postprocessing to achieve prefect group fairness in an explainable and lawful way, accuracy reduced only 0.77 to 0.764.
+real world implementable case
+
+While algorithmic decision-making is gaining popularity, it is important to make sure
+that no unfair treatment is introduced to any group of people. In this project we investigate 
+group fairness of a credit decision model with multiple definitions of the groupings 
+simultaneously, a metric we formalize as intersectional group fairness. We find that 
+the initial model encodes discrimination, and use simple pre- and postprocessing adjustments 
+to correct these faults fully while only reducing accuracy from 0.77 to 0.64. The central insight from this is 
+that interaction of sensitive variables has to be considered to achieve a fair model applicable to a real-world use case.
 
 \section*{notes}
 
 technicalities 
-
 
 dataset we used, most significant characteristics
     - genders and marital statuses
